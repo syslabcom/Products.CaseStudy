@@ -1,6 +1,6 @@
 Metadata-Version: 1.0
 Name: Products.CaseStudy
-Version: 1.1dev
+Version: 1.1dev-r3089
 Summary: A Case Study Content Type
 Home-page: https://svn.syslab.com/svn/OSHA/Products.CaseStudy
 Author: Syslab.com GmbH
@@ -10,18 +10,15 @@ Description: .. contents::
         
         .. Note!
         -----
-        Update the following URLs to point to your:
         
         - code repository
         - bug tracker
         - questions/comments feedback mail
         (do not set a real mail, to avoid spams)
         
-        Or remove it if not used.
-        
-        - Code repository: http://svn.somewhere.com/...
-        - Questions and comments to somemailing_list
-        - Report bugs at http://bug.somewhere.com/..
+        - Code repository: https://svn.syslab.com/svn/OSHA/Products.CaseStudy
+        - Questions and comments to info (at) syslab (dot) com
+        - Report bugs at http://products.syslab.com/products
         
         
         Change history
@@ -30,10 +27,10 @@ Description: .. contents::
         Changelog
         =========
         
-        1.1 (xxxx-xx-xx)
+        1.1 (2009-06-04)
         ----------------
         
-        - Created recipe with ZopeSkel
+        - Created recipe with ZopeSkel for eggification
         [Syslab.com GmbH]
         
         Detailed Documentation
@@ -99,7 +96,8 @@ Description: .. contents::
         Contributors
         ************
         
-        Syslab.com GmbH, Author
+        - Wolfgang Thomas, Syslab.com GmbH
+        - Alexander Pilz, Syslab.com GmbH
         
         
         Download
