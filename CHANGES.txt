@@ -1,8 +1,0 @@
-Changelog
-=========
-
-1.1 (2009-06-04)
-----------------
-
-- Created recipe with ZopeSkel for eggification
-  [Syslab.com GmbH]
