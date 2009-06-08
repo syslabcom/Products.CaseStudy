@@ -15,6 +15,7 @@ Products.CaseStudy.egg-info/not-zip-safe
 Products.CaseStudy.egg-info/paster_plugins.txt
 Products.CaseStudy.egg-info/requires.txt
 Products.CaseStudy.egg-info/top_level.txt
+Products/CaseStudy/.svnignore
 Products/CaseStudy/CaseStudy.py
 Products/CaseStudy/README.txt
 Products/CaseStudy/__init__.py
@@ -42,7 +43,6 @@ Products/CaseStudy/i18n/casestudy-de.po
 Products/CaseStudy/i18n/casestudy-en.po
 Products/CaseStudy/i18n/casestudy.pot
 Products/CaseStudy/i18n/plone-casestudy-en.po
-Products/CaseStudy/interfaces/__init__.py
 Products/CaseStudy/portlets/__init__.py
 Products/CaseStudy/portlets/configure.zcml
 Products/CaseStudy/profiles/default/cssregistry.xml
