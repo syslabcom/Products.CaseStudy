@@ -1,6 +1,11 @@
 Changelog
 =========
 
+Products.CaseStudy 1.2 (2009-06-19)
+-----------------------------------
+
+- added tests, cleanup (thomas)
+
 1.1 (2009-06-04)
 ----------------
 
