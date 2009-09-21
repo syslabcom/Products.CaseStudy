@@ -21,7 +21,7 @@ long_description = (
     'Detailed Documentation\n'
     '**********************\n'
     + '\n' +
-    read('Products', 'CaseStudy', 'README.txt')
+    read('src', 'Products', 'CaseStudy', 'README.txt')
     + '\n' +
     'Contributors\n'
     '************\n'
@@ -50,11 +50,15 @@ setup(name='Products.CaseStudy',
       author_email='mailto:info@syslab.com',
       url='https://svn.syslab.com/svn/OSHA/Products.CaseStudy',
       license='GPL',
-      packages=find_packages(exclude=['ez_setup']),
+      packages=['Products', 'Products/CaseStudy'],
+      package_dir = {'' : 'src'},
       namespace_packages=['Products', ],
       include_package_data=True,
       zip_safe=False,
       install_requires=['setuptools',
+                        'Products.RichDocument',
+                        'Products.VocabularyPickerWidget',
+                        'Products.TextIndexNG3'
                         # -*- Extra requirements: -*-
                         ],
       tests_require=tests_require,

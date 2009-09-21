@@ -1,6 +1,10 @@
 Changelog
 =========
 
+Products.CaseStudy 1.3 (2009-09-21)
+
+- made it standalone capable (gerken)
+
 Products.CaseStudy 1.2 (2009-06-19)
 -----------------------------------
 
