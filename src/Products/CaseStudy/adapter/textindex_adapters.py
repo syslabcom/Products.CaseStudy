@@ -3,7 +3,11 @@ from zope.interface import implements
 
 from Products.CaseStudy.interfaces import ICaseStudy
 
-from Products.TextIndexNG3.adapters.cmf_adapters import CMFContentAdapter
+try:
+    from osha.theme.adapter_textindexng3 import ContentAdapter as CMFContentAdapter
+except ImportError:
+    from Products.TextIndexNG3.adapters.cmf_adapters import CMFContentAdapter
+
 from Products.TextIndexNG3.src.textindexng.content import IndexContentCollector as ICC
 from Products.TextIndexNG3.src.textindexng.interfaces import IIndexableContent
 
