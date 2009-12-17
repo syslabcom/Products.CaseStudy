@@ -142,8 +142,16 @@ schema = Schema((
         name='displayAttachments',
         default=True,
         widget=BooleanField._properties['widget'](
-            description=_(u'casestudy_displayAttachments_description', default=u"If selected, uploaded files will be available for download at the bottom of the page."),
-            label=_(u'casestudy_displayAttachments_label', default=u"Display attachments box"),
+            description= _(
+                u'casestudy_displayAttachments_description', 
+                default=
+                    u"If selected, uploaded files will be available " \
+                    u"for download at the bottom of the page."
+                ),
+            label=_(
+                    u'casestudy_displayAttachments_label', 
+                    default=u"Display attachments box"
+                   ),
             expanded=False,
             macro="widget_casestudy_attachmentmanager",
         ),
@@ -151,18 +159,14 @@ schema = Schema((
 ),
 )
 
-
-CaseStudy_schema = BaseSchema.copy() + \
-    schema.copy()
+CaseStudy_schema = BaseSchema.copy() + schema.copy()
 
 CaseStudy_schema.moveField('displayAttachments', after='remoteUrl')
 
 finalizeATCTSchema(CaseStudy_schema)
 
-
 CaseStudy_schema['displayImages'].widget.visible['edit'] = 'invisible'
 CaseStudy_schema['displayImages'].widget.visible['view'] = 'invisible'
-
 
 unwantedFields = ('allowDiscussion', 'nextPreviousEnabled',
     'excludeFromNav', 'tableContents', 'presentation', 'relatedItems', 'location')
@@ -177,14 +181,10 @@ ofields = [x for x in CaseStudy_schema.fields() if x.schemata=='ownership']
 for field in ofields:
     CaseStudy_schema.changeSchemataForField(field.getName(), 'other')
 
-
-
 for name in unwantedFields:
     if CaseStudy_schema.get(name, None):
         CaseStudy_schema[name].widget.visible['edit'] = 'invisible'
         CaseStudy_schema[name].widget.visible['view'] = 'invisible'
-        CaseStudy_schema.changeSchemataForField(name, 'default')
-
 
 
 class CaseStudy(BaseContent, RichDocument, BrowserDefaultMixin):
@@ -198,7 +198,6 @@ class CaseStudy(BaseContent, RichDocument, BrowserDefaultMixin):
 
     schema = CaseStudy_schema
 
-        
     security.declareProtected('View', 'Description')
     def Description(self):
         """
@@ -208,7 +207,6 @@ class CaseStudy(BaseContent, RichDocument, BrowserDefaultMixin):
         patt_entity = re.compile('&.{1,6};')
         text = re.sub(patt_entity, ' ', re.sub(patt_html,' ', self.getText()))
         return self.restrictedTraverse('@@plone').cropText(text, 300, ellipsis='...')
-
 
     def _Vocabulary(self, vocab_name):
         pv = getToolByName(self, 'portal_vocabularies')
@@ -238,61 +236,6 @@ class CaseStudy(BaseContent, RichDocument, BrowserDefaultMixin):
         vocab = [(x, str(x)) for x in range(1996,now+1)]
         return vocab
         
-#    def getRemoteProviderUID(self):
-#        """ return the UID of the provider, stored via reference. Used for indexing """
-#        f = self.getField('remoteProvider')
-#        return f.getRaw(self)
-
-#    security.declareProtected('View', 'Provider')
-#    def Provider(self):
-#        """ compatibility to DC """
-#        return self.getProvider()
-
-#    security.declareProtected('View', 'getProviderVocabulary')
-#    def getProviderVocabulary(self):
-#        """
-#        """
-#        pc = getToolByName(self, 'portal_catalog')
-#        provRes = pc(portal_type='Provider')
-#        pvt = getToolByName(self, 'portal_vocabularies')
-#        VOCAB = pvt.get('provider_category')
-#        results = dict()
-#        if VOCAB:
-#            DL =VOCAB.getDisplayList(self)
-#            cats = DL.keys()
-#            for catId, catName in DL.items():
-#                results[catId] = (catName, dict())
-#            for res in provRes:
-#                if res.getProvider_category in cats:
-#                    results[res.getProvider_category][1][res.UID] = (res.Title, None)
-#        else:
-#            for res in provRes:
-#                results[res.UID] = (res.Title, None)
-#        return results
-
-#    security.declareProtected('View', 'getProviderQuicksearch')
-#    def getProviderQuicksearch(self):
-#        """ return a DisplayList of all providers """
-#        pc = getToolByName(self, 'portal_catalog')
-#        provRes = pc(portal_type='Provider')
-#        DL = DisplayList()
-#        for r in provRes:
-#            DL.add(r.UID, r.Title)
-#        return DL
-
-#    security.declareProtected('View', 'getProviderDefault')
-#    def getProviderDefault(self):
-#        """ tries to find a default value from the site settings
-#        """
-#        portal_url = getToolByName(self, 'portal_url')
-#        portal = portal_url.getPortalObject()
-#        provider = portal.getProperty('provider', None) or \
-#                   portal.portal_properties.site_properties.getProperty('provider', None) or \
-#                   DEFAULT_PROVIDER
-#        return provider
-
-
-
 registerType(CaseStudy, PROJECTNAME)
 
 
