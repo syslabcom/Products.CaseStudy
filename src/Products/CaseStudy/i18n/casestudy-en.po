@@ -16,160 +16,85 @@ msgstr ""
 "Preferred-Encodings: utf-8\n"
 "Domain: CaseStudy\n"
 
-#. Default: "Enter a URL where further information can be found"
-#: CaseStudy.py
-msgid "CaaseStudy_description_external_url"
-msgstr ""
-
-#. Default: "Enter an abstract of the case study (up to 350 words)"
-#: CaseStudy.py
-msgid "CaseStudy_description_abstract"
-msgstr ""
-
-#. Default: "Enter the action of the case study"
-#: CaseStudy.py
-msgid "CaseStudy_description_action"
-msgstr ""
-
-#. Default: "Enter the issue of the case study"
-#: CaseStudy.py
-msgid "CaseStudy_description_issue"
-msgstr ""
-
-#. Default: "The year in which the case study was first published"
-#: CaseStudy.py
-msgid "CaseStudy_description_publication_year"
-msgstr ""
-
-#. Default: "Enter a URL where further information can be found"
-#: CaseStudy.py
-msgid "CaseStudy_description_remote_url"
-msgstr ""
-
-#. Default: "Enter the results of the case study"
-#: CaseStudy.py
-msgid "CaseStudy_description_results"
-msgstr ""
-
-#. Default: "If selected, uploaded files will be available for download at the bottom of the page."
-#: CaseStudy.py
-msgid "CaseStudy_help_displayAttachments"
-msgstr ""
-
-#. Default: "The Organisation which provides this information."
-#: CaseStudy.py
-msgid "CaseStudy_help_organisation"
-msgstr ""
-
-#. Default: "The Provider of this CaseStudy Link"
-#: CaseStudy.py
-msgid "CaseStudy_help_provider"
-msgstr ""
-
-#. Default: "The remote Organisation which provides this information."
-#: CaseStudy.py
-msgid "CaseStudy_help_remoteProvider"
-msgstr ""
-
-#. Default: "Abstract text"
-#: CaseStudy.py
-msgid "CaseStudy_label_abstract"
-msgstr ""
-
-#. Default: "The action"
-#: CaseStudy.py
-msgid "CaseStudy_label_action"
-msgstr ""
-
-#. Default: "Description"
-#: CaseStudy.py
-msgid "CaseStudy_label_description"
-msgstr ""
-
-#. Default: "Display attachmenrts box"
-#: CaseStudy.py
-msgid "CaseStudy_label_displayAttachments"
-msgstr ""
-
-#. Default: "External URL"
-#: CaseStudy.py
-msgid "CaseStudy_label_external_url"
-msgstr ""
 
 #. Default: "The issue"
 #: CaseStudy.py
-msgid "CaseStudy_label_issue"
-msgstr ""
+msgid "casestudy_text_label"
+msgstr "The issue"
 
-#. Default: "Organisation"
+#. Default: "Enter the issue of the case study"
 #: CaseStudy.py
-msgid "CaseStudy_label_organisation"
-msgstr ""
+msgid "casestudy_text_description"
+msgstr "Enter the issue of the case study. Note that the total length of Issue, Action and Results may not exceed 350 words."
 
-#. Default: "Provider"
+#. Default: "The action"
 #: CaseStudy.py
-msgid "CaseStudy_label_provider"
-msgstr ""
+msgid "casestudy_action_label"
+msgstr "The action"
 
-#. Default: "Publication year"
+#. Default: "Enter the action of the case study"
 #: CaseStudy.py
-msgid "CaseStudy_label_publication_year"
-msgstr ""
-
-#. Default: "Organisation"
-#: CaseStudy.py
-msgid "CaseStudy_label_remoteProvider"
-msgstr ""
-
-#. Default: "Remote URL"
-#: CaseStudy.py
-msgid "CaseStudy_label_remote_url"
-msgstr ""
+msgid "casestudy_action_description"
+msgstr "Enter the action of the case study. Note that the total length of Issue, Action and Results may not exceed 350 words."
 
 #. Default: "The results"
 #: CaseStudy.py
-msgid "CaseStudy_label_results"
-msgstr ""
+msgid "casestudy_results_label"
+msgstr "The results"
 
-#. Default: "Select one or more categories"
+#. Default: "Enter the results of the case study"
 #: CaseStudy.py
-msgid "description_category"
-msgstr ""
+msgid "casestudy_results_description"
+msgstr "Enter the results of the case study. Note that the total length of Issue, Action and Results may not exceed 350 words."
 
-#. Default: "Select one or more countries appropriate for this content"
+#. Default: "Publication year by Agency"
 #: CaseStudy.py
-msgid "description_country"
-msgstr ""
+msgid "casestudy_publication_year_label"
+msgstr "Publication year by Agency"
 
-#. Default: "Select one or more entries"
+#. Default: "The year in which the case study was first published"
 #: CaseStudy.py
-msgid "description_multilingual_thesaurus"
-msgstr ""
+msgid "casestudy_publication_year_description"
+msgstr "The year in which the case study was first published"
 
-#. Default: "Select the appropriate sector"
+#. Default: "Name of the organisation(s)"
 #: CaseStudy.py
-msgid "description_nace"
-msgstr ""
+msgid "casestudy_organisation_label"
+msgstr "Name of the organisation(s)"
 
-#. Default: "Category"
+#. Default: "Type the name of organisation(s) that carried out the case study"
 #: CaseStudy.py
-msgid "label_category"
-msgstr ""
+msgid "casestudy_organisation_description"
+msgstr "Type the name of organisation(s) that carried out the case study"
 
-#. Default: "Country"
+#. Default: "Case Study Language"
 #: CaseStudy.py
-msgid "label_country"
-msgstr ""
+msgid "casestudy_remoteLanguage_label"
+msgstr "Case Study Language"
 
-#. Default: "Multilingual Thesaurus code"
+#. Default: "The language of the linked contents"
 #: CaseStudy.py
-msgid "label_multilingual_thesaurus"
-msgstr ""
+msgid "casestudy_remoteLanguage_description"
+msgstr "The language of the linked contents"
 
-#. Default: "Sector"
+#. Default: "Case Study URL"
 #: CaseStudy.py
-msgid "label_nace"
-msgstr ""
+msgid "casestudy_remoteUrl_label"
+msgstr "Case Study URL"
 
-msgid "help_categories"
-msgstr "Choose the most relevant categories. This will decide where the information is displayed"
+#. Default: "Paste here the location of the case study document or chapter in the agency publication."
+#: CaseStudy.py
+msgid "casestudy_remoteUrl_description"
+msgstr "Paste here the location of the case study document or chapter in the agency publication."
+
+#. Default: "Display attachments box"
+#: CaseStudy.py
+msgid "casestudy_displayAttachments_label"
+msgstr "Display attachments box"
+
+#. Default: "If selected, uploaded files will be available for download at the bottom of the page."
+#: CaseStudy.py
+msgid "casestudy_displayAttachments_description"
+msgstr "If selected, uploaded files will be available for download at the bottom of the page."
+
+
