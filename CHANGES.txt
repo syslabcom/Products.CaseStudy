@@ -1,26 +1,26 @@
 Changelog
 =========
 
-
-1.4.1 (unreleased)
+1.4.1 (2009-12-30)
 ------------------
 
-- Added EUPL license (deroiste)
+- Added EUPL license [deroiste]
+- In CaseStudy.py, don't move the unwanted fields into the 'default' schemata [jcbrand]
 
 1.4 (2009-11-17)
 ----------------
 
-- using osha.theme's ContentAdapter for the textindexng3 adapter (thomasw)
+- using osha.theme's ContentAdapter for the textindexng3 adapter [thomasw]
 
 1.3 (2009-09-26)
 ----------------
 
-- made it standalone capable (gerken)
+- made it standalone capable [gerken]
 
 1.2 (2009-06-19)
 ----------------
 
-- added tests, cleanup (thomas)
+- added tests, cleanup [thomasw]
 
 1.1 (2009-06-04)
 ----------------
