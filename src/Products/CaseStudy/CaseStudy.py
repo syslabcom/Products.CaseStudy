@@ -235,7 +235,15 @@ class CaseStudy(BaseContent, RichDocument, BrowserDefaultMixin):
         now = DateTime().year()+1
         vocab = [(x, str(x)) for x in range(1996,now+1)]
         return vocab
-        
+
+    def getCaseStudyAttachments(self):
+        """ Return attachments of CaseStudy. Fall back to canonical if a
+            translation doesn't have any.
+        """
+        att = self.getFolderContents(contentFilter={'portal_type': ['FileAttachment']})
+        if not att and not self.isCanonical():
+            att = self.getCanonical().getFolderContents(contentFilter={'portal_type': ['FileAttachment']})
+        return att
 registerType(CaseStudy, PROJECTNAME)
 
 
