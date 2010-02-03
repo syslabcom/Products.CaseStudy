@@ -142,6 +142,7 @@ schema = Schema((
         name='displayAttachments',
         default=True,
         widget=BooleanField._properties['widget'](
+            condition="python:'portal_factory' not in object.getPhysicalPath()",
             description= _(
                 u'casestudy_displayAttachments_description', 
                 default=
