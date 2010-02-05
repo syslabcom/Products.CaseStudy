@@ -98,7 +98,6 @@ schema = Schema((
     IntegerField(
         name='publication_year',
         validators = 'isInt',
-        default_method = 'getCurrentYear',
         vocabulary = 'yearVocabulary',
         widget = SelectionWidget(
             label=_(u'casestudy_publication_year_label', default=u"Publication year by Agency"),
@@ -217,11 +216,6 @@ class CaseStudy(BaseContent, RichDocument, BrowserDefaultMixin):
         else:
             return DisplayList()
 
-    def getCurrentYear(self):
-        """ returns the current year """
-        now = DateTime().year()
-        return now
-        
     def getFilteredLanguages(self):
         """ return the languages supported in the site """
         plt = getToolByName(self, 'portal_languages')
@@ -234,7 +228,8 @@ class CaseStudy(BaseContent, RichDocument, BrowserDefaultMixin):
 
     def yearVocabulary(self):
         now = DateTime().year()+1
-        vocab = [(x, str(x)) for x in range(1996,now+1)]
+        vocab = [(x, str(x)) for x in range(1996,now)]
+        vocab.reverse()
         return vocab
 
     def getCaseStudyAttachments(self):
