@@ -6,6 +6,9 @@ Changelog
 
 - If a translation doesn't have attachments, displays the canonical's
   attachments #416 (thomasw)
+- don't show attachment field while in portal_factory #614 (thomasw)
+- reversed order of publication_year list, so that the current year is always
+  on top #721 (thomasw)
 
 
 1.4.1 (2009-12-30)
