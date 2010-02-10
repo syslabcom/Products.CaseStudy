@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.4.2 (unreleased)
+1.4.2 (2010-02-10)
 ------------------
 
 - If a translation doesn't have attachments, displays the canonical's
