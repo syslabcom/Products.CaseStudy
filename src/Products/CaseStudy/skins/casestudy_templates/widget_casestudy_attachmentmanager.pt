@@ -11,7 +11,7 @@
             tal:define="voc field/Vocabulary;
                         accessor python:field.getAccessor(here);
                         value python:voc and voc.getValue(str(accessor())) or accessor();
-						attachments python:here.getCaseStudyAttachments()">
+                        attachments python:here.getCaseStudyAttachments()">
     <tal:block condition="python:(test(not not accessor() and accessor() not in ('0', 'False'), 1, 0)) and attachments">
         <fieldset id="attachmentsBox">
             <legend i18n:translate="legend_attachments">Full case study</legend>
@@ -20,9 +20,7 @@
                 <li tal:define="desc item/Description;
                                 item_type item/portal_type;
                                 item_type_class python:'contenttype-' + putils.normalizeString(item_type);
-                                item_wf_state item/review_state | python:getInfoFor(item, 'review_state', '');
-                                item_wf_state_class python:'state-' + putils.normalizeString(item_wf_state);
-                                item_url item/getURL;">
+                                item_url item/absolute_url;">
                     <span tal:attributes="class item_type_class">
                         <a href="" class="visualIconPadding"
                            tal:attributes="href item_url;

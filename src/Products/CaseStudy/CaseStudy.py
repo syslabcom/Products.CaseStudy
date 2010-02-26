@@ -236,10 +236,13 @@ class CaseStudy(BaseContent, RichDocument, BrowserDefaultMixin):
         """ Return attachments of CaseStudy. Fall back to canonical if a
             translation doesn't have any.
         """
-        att = self.getFolderContents(contentFilter={'portal_type': ['FileAttachment']})
-        if not att and not self.isCanonical():
-            att = self.getCanonical().getFolderContents(contentFilter={'portal_type': ['FileAttachment']})
-        return att
+        attachments = [getattr(self, item['id']) for item in self._objects]
+        if not attachments and not self.isCanonical():
+            obj = self.getCanonical()
+            attachments = [getattr(obj, item['id']) for item in obj._objects]
+        return attachments
+
+
 registerType(CaseStudy, PROJECTNAME)
 
 
