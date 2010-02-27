@@ -13,6 +13,17 @@
                for=".interfaces.ICaseStudy"
                provides="slc.xliff.interfaces.IAttributeExtractor" />
   </configure>
-  
-  
+
+    <subscriber
+        for="Products.CaseStudy.interfaces.ICaseStudy
+             Products.Archetypes.interfaces.IObjectEditedEvent"
+        handler=".handlers.case_study_edited"
+        />
+
+    <subscriber 
+        for="Products.CaseStudy.interfaces.ICaseStudy
+             Products.LinguaPlone.events.IObjectTranslatedEvent"
+        handler=".handlers.case_study_edited"
+        />
+
 </configure>

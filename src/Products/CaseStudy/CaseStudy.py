@@ -118,6 +118,7 @@ schema = Schema((
     ),    
     LinesField(
         name='remoteLanguage',
+        languageIndependent=True,
         widget=MultiSelectionWidget(
             label=_(u'casestudy_remoteLanguage_label', default=u"Case Study Language"),
             description=_(u'casestudy_remoteLanguage_description', default=u"The language of the linked contents"),
