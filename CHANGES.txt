@@ -1,11 +1,16 @@
 Changelog
 =========
 
-1.4.4 (unreleased)
+1.4.4 (2010-02-28)
 ------------------
 
-- Nothing changed yet.
-
+- bugfix for #857 - use the CaseStudy's _object list to find attachments, not the
+  catalog-dependent "getFolderContents". This is possible since FileAttachments
+  are not subject to the workflow and need not be tested for viewing permissions (thomasw)
+- made remoteLanguage a language_independent field (thomasw)
+- added an event handler for IObjectEditedEvent and IObjectTranslatedEvent that
+  makes sure all "natural" languages of a CaseStudy are part of the
+  remoteLanguage #764 (thomasw)
 
 1.4.3 (2010-02-10)
 ------------------
