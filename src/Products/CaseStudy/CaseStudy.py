@@ -169,7 +169,7 @@ finalizeATCTSchema(CaseStudy_schema)
 CaseStudy_schema['displayImages'].widget.visible['edit'] = 'invisible'
 CaseStudy_schema['displayImages'].widget.visible['view'] = 'invisible'
 
-unwantedFields = ('allowDiscussion', 'nextPreviousEnabled',
+unwantedFields = ('allowDiscussion', 'nextPreviousEnabled', 'subject',
     'excludeFromNav', 'tableContents', 'presentation', 'relatedItems', 'location')
 
 cfields = [x for x in CaseStudy_schema.fields() if x.schemata=='categorization']
