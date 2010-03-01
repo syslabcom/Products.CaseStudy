@@ -58,6 +58,7 @@ setup(name='Products.CaseStudy',
       zip_safe=False,
       install_requires=['setuptools',
                         'Products.RichDocument',
+                        'Products.LinguaPlone',
                         'Products.VocabularyPickerWidget',
                         'Products.TextIndexNG3'
                         # -*- Extra requirements: -*-
