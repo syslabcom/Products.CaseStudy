@@ -19,6 +19,7 @@ class CaseStudyLayer(SiteLayer):
     @classmethod
     def setUp(cls):
         ztc.installProduct('CaseStudy')
+        ztc.installProduct('LinguaPlone')
         ptc.setupPloneSite(products=['CaseStudy'])
         SiteLayer.setUp()
 
