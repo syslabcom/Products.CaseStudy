@@ -77,7 +77,7 @@
 
     <tal:after_field define="visState python:widget.isVisible(here, mode);
                              visCondition python:field.widget.testCondition(here, portal, template);
-                             attachments python:here.getFolderContents(contentFilter={'portal_type': ['FileAttachment']})"
+                             attachments python:here.getCaseStudyAttachments()"
                      condition="python:visState == 'visible' and visCondition">
 
         <dl id="attachment-controls"
@@ -104,7 +104,7 @@
                                        />
                             </td>
                             <td valign="top" align="center" style="padding: 2px">
-                                <a href="" target="_blank" tal:attributes="href attachment/getURL">
+                                <a href="" target="_blank" tal:attributes="href attachment/absolute_url">
                                     <img tal:replace="structure here/file_icon.gif"/>
                                 </a>
                             </td>
@@ -124,7 +124,7 @@
                                                        value attachment/Title;"
                                        />
                                 <div class="discreet">
-                                    (<a href="" target="_blank" tal:attributes="href attachment/getURL"
+                                    (<a href="" target="_blank" tal:attributes="href attachment/absolute_url"
                                         tal:content="attachment/getId">Id</a> -
                                      <span tal:replace="attachment/getObjSize"/>)
                                  </div>
