@@ -10,38 +10,27 @@
 __author__ = """Syslab.com Gmbh <info@syslab.com>"""
 __docformat__ = 'plaintext'
 
+import re
+
 from AccessControl import ClassSecurityInfo
-from Products.Archetypes.atapi import *
-
-try:
-    from Products.LinguaPlone.public import *
-except ImportError:
-    HAS_LINGUAPLONE = False
-else:
-    HAS_LINGUAPLONE = True
-
-from zope.interface import implements
-import interfaces
 from DateTime import DateTime
 
-from Products.CMFDynamicViewFTI.browserdefault import BrowserDefaultMixin
-
-from Products.CaseStudy.config import *
-from Products.CaseStudy import CaseStudyMessageFactory as _
-from Products.CMFPlone import PloneMessageFactory as _plone_message_factory
-
-from Products.RichDocument.content.richdocument import RichDocument, RichDocumentSchema as BaseSchema
-from Acquisition import aq_base, aq_parent, aq_base
-from Products.ATContentTypes.content.schemata import finalizeATCTSchema
-from Products.SimpleAttachment.widget import AttachmentsManagerWidget
-from Products.VocabularyPickerWidget.VocabularyPickerWidget import VocabularyPickerWidget
-from Products.CMFCore.utils import getToolByName
-from Products.Archetypes.utils import DisplayList
-import re
 from zope.i18n import translate
+from zope.interface import implements
 
-
+from Products.ATContentTypes.content.schemata import finalizeATCTSchema
+from Products.Archetypes.atapi import *
+from Products.Archetypes.utils import DisplayList
+from Products.CMFCore.utils import getToolByName
+from Products.CMFDynamicViewFTI.browserdefault import BrowserDefaultMixin
+from Products.CMFPlone import PloneMessageFactory as _plone_message_factory
+from Products.CaseStudy import CaseStudyMessageFactory as _
+from Products.CaseStudy.config import *
 from Products.CaseStudy.validators import CaseStudyTextSizeValidator 
+from Products.RichDocument.content.richdocument import RichDocument, RichDocumentSchema as BaseSchema
+
+import interfaces
+
 CSTV = CaseStudyTextSizeValidator('max350Words', words=350)
 
 
@@ -127,6 +116,7 @@ schema = Schema((
         enforceVocabulary=True,
         multiValued=True,
         vocabulary='getFilteredLanguages',
+        required=True,
     ),
     StringField(
         name='remoteUrl',
@@ -161,7 +151,6 @@ schema = Schema((
 )
 
 CaseStudy_schema = BaseSchema.copy() + schema.copy()
-
 CaseStudy_schema.moveField('displayAttachments', after='remoteUrl')
 
 finalizeATCTSchema(CaseStudy_schema)
