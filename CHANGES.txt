@@ -1,11 +1,11 @@
 Changelog
 =========
 
-1.4.5 (unreleased)
+1.4.5 (2011-05-19)
 ------------------
 
-- Nothing changed yet.
-
+- RemoteLanguage should now be required field on CaseStudies. Check that there
+  is now a box showing downloadable attachments on CaseStudies. #1855 [jcbrand]
 
 1.4.4 (2010-02-28)
 ------------------
