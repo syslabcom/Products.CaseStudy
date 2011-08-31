@@ -60,7 +60,6 @@ setup(name='Products.CaseStudy',
                         'z3c.autoinclude',
                         'Products.RichDocument',
                         'Products.LinguaPlone',
-                        'Products.VocabularyPickerWidget',
                         'Products.TextIndexNG3'
                         # -*- Extra requirements: -*-
                         ],
