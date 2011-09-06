@@ -8,8 +8,8 @@ try:
 except ImportError:
     from Products.TextIndexNG3.adapters.cmf_adapters import CMFContentAdapter
 
-from Products.TextIndexNG3.src.textindexng.content import IndexContentCollector as ICC
-from Products.TextIndexNG3.src.textindexng.interfaces import IIndexableContent
+from zopyx.txng3.core.content import IndexContentCollector as ICC
+from zopyx.txng3.core.interfaces import IIndexableContent
 
 class CaseStudyContentAdapter(CMFContentAdapter):
 
