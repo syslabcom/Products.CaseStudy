@@ -9,7 +9,7 @@ _marker = []
 class CaseStudyTextSizeValidator:
     """Tests if the sum of Abstract, Action and Result does exceed 350 words in english 
     """
-    __implements__ = IValidator
+    implements(IValidator)
         
     def __init__(self, name, words=0, chars=0):
         self.name = name
