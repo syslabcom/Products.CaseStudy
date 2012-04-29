@@ -218,7 +218,7 @@ class CaseStudy(BaseContent, RichDocument, BrowserDefaultMixin):
 
     def yearVocabulary(self):
         now = DateTime().year()+1
-        vocab = [(x, str(x)) for x in range(1996,now)]
+        vocab = [(str(x), x) for x in range(1996,now)]
         vocab.reverse()
         return vocab
 
