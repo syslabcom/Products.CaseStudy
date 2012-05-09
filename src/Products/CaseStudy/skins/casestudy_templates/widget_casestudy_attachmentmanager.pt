@@ -23,6 +23,7 @@
                 <tal:related tal:repeat="item attachments">
                     <li tal:define="desc item/Description;
                                     item_type item/portal_type;
+                                    putils context/plone_utils;
                                     item_type_class python:'contenttype-' + putils.normalizeString(item_type);
                                     item_url item/absolute_url;">
                         <span tal:attributes="class item_type_class">
