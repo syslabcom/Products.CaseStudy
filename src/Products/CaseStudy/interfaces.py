@@ -11,4 +11,3 @@ class ICaseStudy(Interface):
 
 ##code-section FOOT
 ##/code-section FOOT
-

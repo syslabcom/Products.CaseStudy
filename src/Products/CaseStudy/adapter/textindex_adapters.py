@@ -1,5 +1,4 @@
 from zope.component import adapts
-from zope.interface import implements
 
 from Products.CaseStudy.interfaces import ICaseStudy
 
@@ -11,12 +10,12 @@ except ImportError:
 from zopyx.txng3.core.content import IndexContentCollector as ICC
 from zopyx.txng3.core.interfaces import IIndexableContent
 
-class CaseStudyContentAdapter(CMFContentAdapter):
 
-    """An adapter for CaseStudy files.
-    """
+class CaseStudyContentAdapter(CMFContentAdapter):
+    """An adapter for CaseStudy files."""
+
     adapts(ICaseStudy)
-    
+
     def indexableContent(self, fields):
         icc = ICC()
         if 'getId' in fields:
@@ -30,7 +29,6 @@ class CaseStudyContentAdapter(CMFContentAdapter):
         if 'getRemoteUrl' in fields:
             self.addRemoteUrlField(icc)
         return icc
-
 
     def addRemoteUrlField(self, icc):
         remote_url = self._c(self.context.getRemoteUrl())

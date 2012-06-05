@@ -26,8 +26,9 @@ from Products.CMFDynamicViewFTI.browserdefault import BrowserDefaultMixin
 from Products.CMFPlone import PloneMessageFactory as _plone_message_factory
 from Products.CaseStudy import CaseStudyMessageFactory as _
 from Products.CaseStudy.config import *
-from Products.CaseStudy.validators import CaseStudyTextSizeValidator 
-from Products.RichDocument.content.richdocument import RichDocument, RichDocumentSchema as BaseSchema
+from Products.CaseStudy.validators import CaseStudyTextSizeValidator
+from Products.RichDocument.content.richdocument import RichDocument
+from Products.RichDocument.content.richdocument import RichDocumentSchema as BaseSchema
 
 import interfaces
 
@@ -41,7 +42,7 @@ schema = Schema((
         required=False,
         widget=TextAreaWidget(
             label=_plone_message_factory(u"Description"),
-            visible={'edit':False, 'view':True},
+            visible={'edit': False, 'view': True},
         ),
         default_output_type="text/plain",
         default_content_type="text/plain",
@@ -50,11 +51,14 @@ schema = Schema((
     ),
     TextField(
         name='text',
-        validators = CSTV,
+        validators=CSTV,
         required=True,
         widget=RichWidget(
             label=_(u'casestudy_text_label', default=u'The issue'),
-            description=_(u'casestudy_text_description', default=u"Enter the issue of the case study. Note that the total length of Issue, Action and Results may not exceed 350 words."),
+            description=_(u'casestudy_text_description',
+                default=(u"Enter the issue of the case study. Note that the "
+                         u"total length of Issue, Action and Results may not "
+                         u"exceed 350 words.")),
         ),
         default_output_type="text/html",
         default_content_type="text/html",
@@ -62,11 +66,14 @@ schema = Schema((
     ),
     TextField(
         name='action',
-        validators = CSTV,
+        validators=CSTV,
         required=True,
         widget=RichWidget(
             label=_(u'casestudy_action_label', default=u"The action"),
-            description=_(u'casestudy_action_description', default=u"Enter the action of the case study. Note that the total length of Issue, Action and Results may not exceed 350 words."),
+            description=_(u'casestudy_action_description',
+                default=u"Enter the action of the case study. Note that the "
+                          u"total length of Issue, Action and Results may not "
+                          u"exceed 350 words."),
         ),
         default_output_type="text/html",
         default_content_type="text/html",
@@ -74,11 +81,14 @@ schema = Schema((
     ),
     TextField(
         name='results',
-        validators = CSTV,
+        validators=CSTV,
         required=True,
         widget=RichWidget(
             label=_(u'casestudy_results_label', default=u"The results"),
-            description=_(u'casestudy_results_description', default=u"Enter the results of the case study. Note that the total length of Issue, Action and Results may not exceed 350 words."),
+            description=_(u'casestudy_results_description',
+                default=u"Enter the results of the case study. Note that the "
+                          u"total length of Issue, Action and Results may not "
+                          u"exceed 350 words."),
         ),
         default_output_type="text/html",
         default_content_type="text/html",
@@ -86,11 +96,14 @@ schema = Schema((
     ),
     IntegerField(
         name='publication_year',
-        validators = 'isInt',
-        vocabulary = 'yearVocabulary',
-        widget = SelectionWidget(
-            label=_(u'casestudy_publication_year_label', default=u"Publication year by Agency"),
-            description=_(u'casestudy_publication_year_description', default=u"The year in which the case study was first published"),
+        validators='isInt',
+        vocabulary='yearVocabulary',
+        widget=SelectionWidget(
+            label=_(u'casestudy_publication_year_label',
+                    default=u"Publication year by Agency"),
+            description=_(u'casestudy_publication_year_description',
+                default=u"The year in which the case study was first "
+                          u"published"),
         ),
     ),
     TextField(
@@ -98,19 +111,24 @@ schema = Schema((
         required=False,
         languageIndependent=True,
         widget=RichWidget(
-            label=_(u'casestudy_organisation_label', default=u"Name of the organisation(s)"),
-            description=_(u'casestudy_organisation_description', default=u"Type the name of organisation(s) that carried out the case study"),
+            label=_(u'casestudy_organisation_label',
+                    default=u"Name of the organisation(s)"),
+            description=_(u'casestudy_organisation_description',
+                default=u"Type the name of organisation(s) that carried out "
+                          u"the case study"),
         ),
         default_output_type="text/html",
         default_content_type="text/html",
         searchable=1,
-    ),    
+    ),
     LinesField(
         name='remoteLanguage',
         languageIndependent=True,
         widget=MultiSelectionWidget(
-            label=_(u'casestudy_remoteLanguage_label', default=u"Case Study Language"),
-            description=_(u'casestudy_remoteLanguage_description', default=u"The language of the linked contents"),
+            label=_(u'casestudy_remoteLanguage_label',
+                    default=u"Case Study Language"),
+            description=_(u'casestudy_remoteLanguage_description',
+                          default=u"The language of the linked contents"),
             rows=5,
         ),
         enforceVocabulary=True,
@@ -123,7 +141,9 @@ schema = Schema((
         widget=StringField._properties['widget'](
             i18n_domain="casestudy",
             label=_(u'casestudy_remoteUrl_label', default=u"Case Study URL"),
-            description=_(u'casestudy_remoteUrl_description', default=u"Paste here the location of the case study document or chapter in the agency publication."),
+            description=_(u'casestudy_remoteUrl_description',
+                default=u"Paste here the location of the case study document "
+                          u"or chapter in the agency publication."),
             macro="urlwidget",
             size=60,
         ),
@@ -133,14 +153,13 @@ schema = Schema((
         default=True,
         widget=BooleanField._properties['widget'](
             condition="python:'portal_factory' not in object.getPhysicalPath()",
-            description= _(
-                u'casestudy_displayAttachments_description', 
-                default=
-                    u"If selected, uploaded files will be available " \
-                    u"for download at the bottom of the page."
+            description=_(
+                u'casestudy_displayAttachments_description',
+                default=u"If selected, uploaded files will be available " \
+                        u"for download at the bottom of the page."
                 ),
             label=_(
-                    u'casestudy_displayAttachments_label', 
+                    u'casestudy_displayAttachments_label',
                     default=u"Display attachments box"
                    ),
             expanded=False,
@@ -158,16 +177,25 @@ finalizeATCTSchema(CaseStudy_schema)
 CaseStudy_schema['displayImages'].widget.visible['edit'] = 'invisible'
 CaseStudy_schema['displayImages'].widget.visible['view'] = 'invisible'
 
-unwantedFields = ('allowDiscussion', 'nextPreviousEnabled', 'subject',
-    'excludeFromNav', 'tableContents', 'presentation', 'relatedItems', 'location')
+unwantedFields = (
+    'allowDiscussion',
+    'nextPreviousEnabled',
+    'subject',
+    'excludeFromNav',
+    'tableContents',
+    'presentation',
+    'relatedItems',
+    'location')
 
-cfields = [x for x in CaseStudy_schema.fields() if x.schemata=='categorization']
+cfields = [x for x in CaseStudy_schema.fields()
+           if x.schemata == 'categorization']
 for field in cfields:
     CaseStudy_schema.changeSchemataForField(field.getName(), 'default')
 
 CaseStudy_schema.changeSchemataForField('language', 'other')
 
-ofields = [x for x in CaseStudy_schema.fields() if x.schemata=='ownership']
+ofields = [x for x in CaseStudy_schema.fields()
+           if x.schemata == 'ownership']
 for field in ofields:
     CaseStudy_schema.changeSchemataForField(field.getName(), 'other')
 
@@ -190,13 +218,14 @@ class CaseStudy(BaseContent, RichDocument, BrowserDefaultMixin):
 
     security.declareProtected('View', 'Description')
     def Description(self):
-        """
-        Override default method to return html-stripped and shortened veriosn of the abstract.
+        """Override default method to return html-stripped and shortened
+        veriosn of the abstract.
         """
         patt_html = re.compile('<.*?>')
         patt_entity = re.compile('&.{1,6};')
-        text = re.sub(patt_entity, ' ', re.sub(patt_html,' ', self.getText()))
-        return self.restrictedTraverse('@@plone').cropText(text, 300, ellipsis='...')
+        text = re.sub(patt_entity, ' ', re.sub(patt_html, ' ', self.getText()))
+        return self.restrictedTraverse('@@plone').cropText(
+            text, 300, ellipsis='...')
 
     def _Vocabulary(self, vocab_name):
         pv = getToolByName(self, 'portal_vocabularies')
@@ -214,11 +243,11 @@ class CaseStudy(BaseContent, RichDocument, BrowserDefaultMixin):
         for l in langs:
             L.append((l[0], translate(l[1]) ))
         L.sort()
-        return DisplayList(L)        
+        return DisplayList(L)
 
     def yearVocabulary(self):
-        now = DateTime().year()+1
-        vocab = [(str(x), x) for x in range(1996,now)]
+        now = DateTime().year() + 1
+        vocab = [(str(x), x) for x in range(1996, now)]
         vocab.reverse()
         return vocab
 
@@ -234,6 +263,3 @@ class CaseStudy(BaseContent, RichDocument, BrowserDefaultMixin):
 
 
 registerType(CaseStudy, PROJECTNAME)
-
-
-
