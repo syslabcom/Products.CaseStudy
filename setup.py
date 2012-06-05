@@ -32,7 +32,6 @@ long_description = (
     '********\n'
     )
 
-tests_require=['zope.testing']
 
 setup(name='Products.CaseStudy',
       version=version,
@@ -52,21 +51,26 @@ setup(name='Products.CaseStudy',
       url='https://svn.syslab.com/svn/OSHA/Products.CaseStudy',
       license='GPL + EUPL',
       packages=['Products', 'Products/CaseStudy'],
-      package_dir = {'' : 'src'},
+      package_dir={'': 'src'},
       namespace_packages=['Products', ],
       include_package_data=True,
       zip_safe=False,
-      install_requires=['setuptools',
-                        'z3c.autoinclude',
-                        'Products.RichDocument',
-                        'Products.LinguaPlone',
-                        'Products.TextIndexNG3'
-                        # -*- Extra requirements: -*-
-                        ],
-      tests_require=tests_require,
-      extras_require=dict(tests=tests_require),
-      test_suite = 'Products.CaseStudy.tests.test_docs.test_suite',
+      install_requires=[
+          'setuptools',
+          'z3c.autoinclude',
+          'gocept.linkchecker',
+          'Products.RichDocument',
+          'Products.LinguaPlone',
+          'Products.TextIndexNG3'
+          # -*- Extra requirements: -*-
+      ],
+      extras_require={
+          'test': [
+              'plone.app.testing',
+              'mock',
+          ],
+      },
       entry_points="""
-      # -*- entry_points -*- 
+      # -*- entry_points -*-
       """,
       )
