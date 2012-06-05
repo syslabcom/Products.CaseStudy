@@ -7,7 +7,8 @@
 <metal:main fill-slot="main">
 
     <tal:main-macro metal:define-macro="main"
-        tal:define="text context/getText">
+        tal:define="text context/getText;
+                    portal context/@@plone_portal_state/portal;">
            
         <div tal:replace="structure provider:plone.abovecontenttitle" />
 
@@ -52,9 +53,7 @@
         </div>
 
 
-
         <div class="visualClear"></div>
-
 
 
         <div tal:define="field python:here.getField('publication_year');
@@ -74,9 +73,6 @@
             tal:condition="python:visState == 'visible' and visCondition">
                 <metal:use_field use-macro="field_macro" />
         </div>
-
-
-        
 
 
         <div tal:define="field python:here.getField('nace');
