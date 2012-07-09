@@ -13,6 +13,7 @@ __docformat__ = 'plaintext'
 import re
 
 from AccessControl import ClassSecurityInfo
+from Acquisition import aq_inner
 from DateTime import DateTime
 
 from zope.i18n import translate
@@ -22,6 +23,7 @@ from Products.ATContentTypes.content.schemata import finalizeATCTSchema
 from Products.Archetypes.atapi import *
 from Products.Archetypes.utils import DisplayList
 from Products.CMFCore.utils import getToolByName
+from Products.CMFPlone import utils as ploneutils
 from Products.CMFDynamicViewFTI.browserdefault import BrowserDefaultMixin
 from Products.CMFPlone import PloneMessageFactory as _plone_message_factory
 from Products.CaseStudy import CaseStudyMessageFactory as _
@@ -205,7 +207,7 @@ for name in unwantedFields:
         CaseStudy_schema[name].widget.visible['view'] = 'invisible'
 
 
-class CaseStudy(BaseContent, RichDocument, BrowserDefaultMixin):
+class CaseStudy(RichDocument, BaseContent, BrowserDefaultMixin):
     """
     """
     security = ClassSecurityInfo()
@@ -224,8 +226,30 @@ class CaseStudy(BaseContent, RichDocument, BrowserDefaultMixin):
         patt_html = re.compile('<.*?>')
         patt_entity = re.compile('&.{1,6};')
         text = re.sub(patt_entity, ' ', re.sub(patt_html, ' ', self.getText()))
-        return self.restrictedTraverse('@@plone').cropText(
+        return self.cropText(
             text, 300, ellipsis='...')
+
+    def cropText(self, text, length, ellipsis='...'):
+        """Crop text on a word boundary
+           Copied from the @@plone BrowserView, since fetching this view requires
+           the presence of a REQUEST which we don't have in an async context
+        """
+        converted = False
+        if not isinstance(text, unicode):
+            encoding = ploneutils.getSiteEncoding(aq_inner(self))
+            text = unicode(text, encoding)
+            converted = True
+        if len(text) > length:
+            text = text[:length]
+            l = text.rfind(' ')
+            if l > length / 2:
+                text = text[:l + 1]
+            text += ellipsis
+        if converted:
+            # encode back from unicode
+            text = text.encode(encoding)
+        return text
+
 
     def _Vocabulary(self, vocab_name):
         pv = getToolByName(self, 'portal_vocabularies')
