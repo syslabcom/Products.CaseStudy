@@ -22,6 +22,9 @@ from zope.interface import implements
 from Products.ATContentTypes.content.schemata import finalizeATCTSchema
 from Products.Archetypes.atapi import *
 from Products.Archetypes.utils import DisplayList
+from Products.ATCountryWidget.Widget import MultiCountryWidget
+from Products.ATVocabularyManager import NamedVocabulary
+from collective.dynatree.atwidget import DynatreeWidget
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone import utils as ploneutils
 from Products.CMFDynamicViewFTI.browserdefault import BrowserDefaultMixin
@@ -51,6 +54,24 @@ schema = Schema((
         accessor="Description",
         searchable=True,
     ),
+    TextField('seoDescription',
+            schemata='default',
+            widget=TextAreaWidget(
+                label=_(
+                    u'osha_seo_description_label',
+                    default=u'SEO Description'
+                    ),
+                description=_(u'osha_seo_description_description',
+                    default=(
+                        u"Provide here a description that is purely for SEO "
+                        "(Search Engine Optimisation) purposes. It will "
+                        "appear in the <meta> tag in the "
+                        "<head> section of the HTML document, but nowhere "
+                        "in the actual website content.")
+                        ),
+                visible={'edit': 'visible', 'view': 'invisible'},
+            ),
+        ),
     TextField(
         name='text',
         validators=CSTV,
@@ -168,6 +189,80 @@ schema = Schema((
             macro="widget_casestudy_attachmentmanager",
         ),
     ),
+    LinesField('country',
+            schemata='default',
+            enforceVocabulary=False,
+            languageIndependent=True,
+            required=False,
+            multiValued=True,
+            widget=MultiCountryWidget(
+                label="Countries",
+                description=(
+                    u'Select one or more countries appropriate for this '
+                    u'content'),
+                description_msgid='help_country',
+                provideNullValue=1,
+                nullValueTitle="Select...",
+                label_msgid='label_country',
+                i18n_domain='osha',
+            ),
+        ),
+    LinesField('subcategory',
+            schemata='default',
+            enforceVocabulary=False,
+            languageIndependent=True,
+            multiValued=True,
+            vocabulary=NamedVocabulary("Subcategory"),
+            widget=DynatreeWidget(
+                label=u"Subcategory",
+                description=u"Pick one or more values by ticking a checkbox" \
+                " in the tree. You can use the quick search field below to " \
+                "find values by typing the first letters. Click 'Close' " \
+                "when you are finished picking values.",
+                selectMode=2,
+                rootVisible=False,
+                minExpandLevel=1,
+                overlay=True,
+                flatlist=True,
+            ),
+    LinesField('nace',
+            schemata='default',
+            languageIndependent=True,
+            multiValued=True,
+            vocabulary=NamedVocabulary("NACE"),
+            widget=DynatreeWidget(
+                label=u"Sector (NACE Code)",
+                description=u"Pick one or more values by ticking a checkbox" \
+                " in the tree. You can use the quick search field below to " \
+                "find values by typing the first letters. Click 'Close' " \
+                "when you are finished picking values.",
+                selectMode=2,
+                showKey=True,
+                rootVisible=False,
+                minExpandLevel=1,
+                overlay=True,
+                flatlist=True,
+            ),
+    LinesField('multilingual_thesaurus',
+            schemata='default',
+            enforceVocabulary=False,
+            languageIndependent=True,
+            required=False,
+            multiValued=True,
+            vocabulary=NamedVocabulary("MultilingualThesaurus"),
+            widget=DynatreeWidget(
+                label=u"Multilingual Thesaurus Subject",
+                description=u"Pick one or more values by ticking a checkbox" \
+                " in the tree. You can use the quick search field below to " \
+                "find values by typing the first letters. Click 'Close' " \
+                "when you are finished picking values.",
+                selectMode=2,
+                showKey=True,
+                rootVisible=False,
+                minExpandLevel=1,
+                overlay=True,
+                flatlist=True,
+            ),
 ),
 )
 
