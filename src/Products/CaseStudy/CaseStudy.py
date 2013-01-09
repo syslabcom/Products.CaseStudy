@@ -19,6 +19,12 @@ from DateTime import DateTime
 from zope.i18n import translate
 from zope.interface import implements
 
+try:
+  from Products.LinguaPlone.public import *
+except ImportError:
+  # No multilingual support
+  from Products.Archetypes.public import *
+
 from Products.ATContentTypes.content.schemata import finalizeATCTSchema
 from Products.Archetypes.atapi import *
 from Products.Archetypes.utils import DisplayList
@@ -32,8 +38,6 @@ from Products.CMFPlone import PloneMessageFactory as _plone_message_factory
 from Products.CaseStudy import CaseStudyMessageFactory as _
 from Products.CaseStudy.config import *
 from Products.CaseStudy.validators import CaseStudyTextSizeValidator
-from Products.RichDocument.content.richdocument import RichDocument
-from Products.RichDocument.content.richdocument import RichDocumentSchema as BaseSchema
 
 import interfaces
 
@@ -305,7 +309,7 @@ for name in unwantedFields:
         CaseStudy_schema[name].widget.visible['view'] = 'invisible'
 
 
-class CaseStudy(RichDocument, BaseContent, BrowserDefaultMixin):
+class CaseStudy(OrderedBaseFolder, BaseContent, BrowserDefaultMixin):
     """
     """
     security = ClassSecurityInfo()
