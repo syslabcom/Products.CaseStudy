@@ -1,10 +1,11 @@
 Changelog
 =========
 
-1.4.7 (unreleased)
+1.4.7 (2013-01-09)
 ------------------
 
-- Nothing changed yet.
+- Don't subclass RichDocument any more, to avoid pulling in the DocumentExtender;
+  fixes #6500 [thomasw]
 
 
 1.4.6 (2012-09-17)
