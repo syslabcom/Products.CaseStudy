@@ -38,6 +38,8 @@ from Products.CMFPlone import PloneMessageFactory as _plone_message_factory
 from Products.CaseStudy import CaseStudyMessageFactory as _
 from Products.CaseStudy.config import *
 from Products.CaseStudy.validators import CaseStudyTextSizeValidator
+from Products.ATContentTypes.content.document import ATDocumentSchema
+from Products.ATContentTypes.content.document import ATDocumentBase
 
 import interfaces
 
@@ -273,13 +275,10 @@ schema = Schema((
 ),
 )
 
-CaseStudy_schema = BaseSchema.copy() + schema.copy()
+CaseStudy_schema = BaseSchema.copy() + ATDocumentSchema.copy() + schema.copy()
 CaseStudy_schema.moveField('displayAttachments', after='remoteUrl')
 
 finalizeATCTSchema(CaseStudy_schema)
-
-CaseStudy_schema['displayImages'].widget.visible['edit'] = 'invisible'
-CaseStudy_schema['displayImages'].widget.visible['view'] = 'invisible'
 
 unwantedFields = (
     'allowDiscussion',
@@ -309,7 +308,7 @@ for name in unwantedFields:
         CaseStudy_schema[name].widget.visible['view'] = 'invisible'
 
 
-class CaseStudy(OrderedBaseFolder, BaseContent, BrowserDefaultMixin):
+class CaseStudy(OrderedBaseFolder, ATDocumentBase, BaseContent, BrowserDefaultMixin):
     """
     """
     security = ClassSecurityInfo()
