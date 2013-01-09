@@ -19,12 +19,6 @@ from DateTime import DateTime
 from zope.i18n import translate
 from zope.interface import implements
 
-try:
-  from Products.LinguaPlone.public import *
-except ImportError:
-  # No multilingual support
-  from Products.Archetypes.public import *
-
 from Products.ATContentTypes.content.schemata import finalizeATCTSchema
 from Products.Archetypes.atapi import *
 from Products.Archetypes.utils import DisplayList
