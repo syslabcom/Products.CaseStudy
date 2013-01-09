@@ -1,11 +1,12 @@
 Changelog
 =========
 
-1.4.8 (unreleased)
+1.4.8 (2013-01-09)
 ------------------
 
-- Nothing changed yet.
-
+- Remove Occupation (ISCO) #6136
+- Don't subclass ATDocument any more, but ATDocumentBase, to avoid pulling the
+  DocumentExtender #6500 [thomasw]
 
 1.4.7 (2013-01-09)
 ------------------
