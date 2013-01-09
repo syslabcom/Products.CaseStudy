@@ -225,6 +225,7 @@ schema = Schema((
                 overlay=True,
                 flatlist=True,
             ),
+        ),
     LinesField('nace',
             schemata='default',
             languageIndependent=True,
@@ -243,6 +244,7 @@ schema = Schema((
                 overlay=True,
                 flatlist=True,
             ),
+        ),
     LinesField('multilingual_thesaurus',
             schemata='default',
             enforceVocabulary=False,
@@ -263,6 +265,7 @@ schema = Schema((
                 overlay=True,
                 flatlist=True,
             ),
+        ),
 ),
 )
 
