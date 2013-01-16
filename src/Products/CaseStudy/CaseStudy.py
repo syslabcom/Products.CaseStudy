@@ -65,7 +65,7 @@ schema = Schema((
                          u"total length of Issue, Action and Results may not "
                          u"exceed 350 words.")),
         ),
-        default_output_type="text/html",
+        default_output_type="text/x-html-safe",
         default_content_type="text/html",
         searchable=1,
     ),
@@ -80,7 +80,7 @@ schema = Schema((
                           u"total length of Issue, Action and Results may not "
                           u"exceed 350 words."),
         ),
-        default_output_type="text/html",
+        default_output_type="text/x-html-safe",
         default_content_type="text/html",
         searchable=1,
     ),
@@ -95,7 +95,7 @@ schema = Schema((
                           u"total length of Issue, Action and Results may not "
                           u"exceed 350 words."),
         ),
-        default_output_type="text/html",
+        default_output_type="text/x-html-safe",
         default_content_type="text/html",
         searchable=1,
     ),
@@ -122,7 +122,7 @@ schema = Schema((
                 default=u"Type the name of organisation(s) that carried out "
                           u"the case study"),
         ),
-        default_output_type="text/html",
+        default_output_type="text/x-html-safe",
         default_content_type="text/html",
         searchable=1,
     ),
